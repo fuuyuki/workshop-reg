@@ -66,6 +66,8 @@ export default async function handler(req, res) {
           <p>Halo <strong>${reg.name}</strong>, nomor unikmu <strong>${reg.number}</strong>.</p>
           <p>Scan QR ini untuk bukti pendaftaran:</p>
           <img src="${qr}" alt="QR Code"/>
+          <p>Tukarkan QR Code dengan Snack dari Panitia🍟</p>
+	  <p>Pastikan Save/Screenshot QRCode kalian!</p>
           <p><a href="${confirmUrl}">Buka Halaman Konfirmasi</a></p>
         </main>
       </body>

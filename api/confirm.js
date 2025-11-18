@@ -29,7 +29,6 @@ export default async function handler(req, res) {
         <main>
           <h2>Halo, ${data.name}</h2>
           <p>Kamu terdaftar dengan nomor <strong>${data.number}</strong>.</p>
-          <p>Tukarkan QR Code dengan Snack dari Panitia🍟</p>
           <p><a href="/">Kembali ke form pendaftaran</a></p>
         </main>
       </body>
