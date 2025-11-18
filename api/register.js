@@ -1,7 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import QRCode from 'qrcode';
 
-// Supabase client
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
 export default async function handler(req, res) {
@@ -19,14 +18,15 @@ export default async function handler(req, res) {
   if (error) return res.status(500).send('Database error: ' + error.message);
 
   const reg = data[0];
-  const qr = await QRCode.toDataURL(`REG-${reg.id}`);
+
+  // Generate QR code pointing to /api/confirm
+  const confirmUrl = `${req.headers.origin}/api/confirm?id=${reg.id}&name=${encodeURIComponent(reg.name)}`;
+  const qr = await QRCode.toDataURL(confirmUrl);
 
   res.setHeader('Content-Type', 'text/html');
   res.send(`
     <h2>Booking Confirmed</h2>
     <p>Hi <strong>${reg.name}</strong>, you booked number <strong>${reg.id}</strong>.</p>
+    <p>Scan this QR to view your confirmation page:</p>
     <img src="${qr}" alt="QR Code"/>
-    <p><a href="/">Book another</a></p>
-  `);
-}
-
+    <p><a href="${confirmUrl}">Open Confirmation
