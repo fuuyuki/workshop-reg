@@ -29,4 +29,6 @@ export default async function handler(req, res) {
     <p>Hi <strong>${reg.name}</strong>, you booked number <strong>${reg.id}</strong>.</p>
     <p>Scan this QR to view your confirmation page:</p>
     <img src="${qr}" alt="QR Code"/>
-    <p><a href="${confirmUrl}">Open Confirmation
+    <p><a href="${confirmUrl}">Open Confirmation Page</a></p>
+  `);
+}
