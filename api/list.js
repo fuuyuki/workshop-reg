@@ -13,6 +13,7 @@ export default async function handler(req, res) {
   const rows = data.map(r => `
     <tr>
       <td>${r.id}</td>
+      <td>${r.number}</td>
       <td>${r.name}</td>
       <td>${r.created_at}</td>
     </tr>
