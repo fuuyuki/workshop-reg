@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Book a spot</title>
+    <style>
+      body { font-family: system-ui; max-width: 600px; margin: 2rem auto; }
+      form { display: flex; gap: .5rem; }
+      input, button { padding: .6rem .8rem; font-size: 1rem; }
+    </style>
+  </head>
+  <body>
+    <h2>Book a spot</h2>
+    <form action="/register" method="POST">
+      <input type="text" name="name" placeholder="Your name" required />
+      <button type="submit">Book a spot</button>
+    </form>
+  </body>
+</html>
