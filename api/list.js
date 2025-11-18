@@ -36,7 +36,7 @@ export default async function handler(req, res) {
       <body>
         <h2>Registration List</h2>
         <table>
-          <thead><tr><th>ID</th><th>Name</th><th>Registered At</th></tr></thead>
+          <thead><tr><th>ID</th><th>Unique Number</th><th>Name</th><th>Registered At</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
         <p><a href="/">Back to booking form</a></p>
