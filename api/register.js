@@ -48,11 +48,28 @@ export default async function handler(req, res) {
 
   res.setHeader('Content-Type', 'text/html');
   res.send(`
-    <h2>Booking Confirmed</h2>
-    <p>Hi <strong>${reg.name}</strong>, your unique number is <strong>${reg.number}</strong>.</p>
-    <p>Scan this QR to view your confirmation page:</p>
-    <img src="${qr}" alt="QR Code"/>
-    <p><a href="${confirmUrl}">Open Confirmation Page</a></p>
+    <!doctype html>
+    <html>
+      <head>
+        <title>Booking Confirmed</title>
+        <style>
+          body { font-family: system-ui; background:#f9f9f9; margin:0; }
+          header { background:linear-gradient(135deg,#4a90e2,#357ab8); color:white; padding:1rem; text-align:center; }
+          main { max-width:600px; margin:2rem auto; background:white; padding:2rem; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1); text-align:center; }
+          img { margin-top:1rem; }
+        </style>
+      </head>
+      <body>
+        <header><h1>Workshop Registration</h1></header>
+        <main>
+          <h2>Booking Confirmed</h2>
+          <p>Hello <strong>${reg.name}</strong>, your unique number is <strong>${reg.number}</strong>.</p>
+          <p>Scan this QR to view your confirmation page:</p>
+          <img src="${qr}" alt="QR Code"/>
+          <p><a href="${confirmUrl}">Open Confirmation Page</a></p>
+        </main>
+      </body>
+    </html>
   `);
 }
 
