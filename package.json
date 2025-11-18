@@ -1,19 +1,16 @@
 {
   "name": "workshop-reg",
   "version": "1.0.0",
-  "description": "",
+  "description": "Workshop registration app with Supabase and QR code",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vercel dev",
+    "start": "vercel dev",
+    "build": "echo 'No build step required'"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "body-parser": "^2.2.0",
-    "express": "^5.1.0",
-    "qrcode": "^1.5.4",
-    "sqlite3": "^5.1.7"
+    "@supabase/supabase-js": "^2.39.0",
+    "qrcode": "^1.5.3"
   }
 }
+
