@@ -51,7 +51,7 @@ export default async function handler(req, res) {
     <!doctype html>
     <html>
       <head>
-        <title>Booking Confirmed</title>
+        <title>Pendaftaran Terkonfirmasi</title>
         <style>
           body { font-family: system-ui; background:#f9f9f9; margin:0; }
           header { background:linear-gradient(135deg,#4a90e2,#357ab8); color:white; padding:1rem; text-align:center; }
@@ -60,13 +60,13 @@ export default async function handler(req, res) {
         </style>
       </head>
       <body>
-        <header><h1>Workshop Registration</h1></header>
+        <header><h1>Registrasi Acara</h1></header>
         <main>
-          <h2>Booking Confirmed</h2>
-          <p>Hello <strong>${reg.name}</strong>, your unique number is <strong>${reg.number}</strong>.</p>
-          <p>Scan this QR to view your confirmation page:</p>
+          <h2>Pendaftaran Terkonfirmasi</h2>
+          <p>Halo <strong>${reg.name}</strong>, nomor unikmu <strong>${reg.number}</strong>.</p>
+          <p>Scan QR ini untuk bukti pendaftaran:</p>
           <img src="${qr}" alt="QR Code"/>
-          <p><a href="${confirmUrl}">Open Confirmation Page</a></p>
+          <p><a href="${confirmUrl}">Buka Halaman Konfirmasi</a></p>
         </main>
       </body>
     </html>

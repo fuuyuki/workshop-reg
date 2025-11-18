@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     <!doctype html>
     <html>
       <head>
-        <title>Registration Confirmation</title>
+        <title>Konfirmasi Pendaftaran</title>
         <style>
           body { font-family: system-ui; background:#f9f9f9; margin:0; }
           header { background:linear-gradient(135deg,#4a90e2,#357ab8); color:white; padding:1rem; text-align:center; }
@@ -25,11 +25,11 @@ export default async function handler(req, res) {
         </style>
       </head>
       <body>
-        <header><h1>Workshop Registration</h1></header>
+        <header><h1>Konfirmasi Pendaftaran</h1></header>
         <main>
-          <h2>Hello, ${data.name}</h2>
-          <p>You are registered with the number <strong>${data.number}</strong>.</p>
-          <p><a href="/">Back to booking form</a></p>
+          <h2>Halo, ${data.name}</h2>
+          <p>Kamu terdaftar dengan nomor <strong>${data.number}</strong>.</p>
+          <p><a href="/">Kembali ke form pendaftaran</a></p>
         </main>
       </body>
     </html>

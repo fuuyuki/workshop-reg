@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     <!doctype html>
     <html>
       <head>
-        <title>Registration List</title>
+        <title>Data Peserta Terdaftar</title>
         <style>
           body { font-family: system-ui; background:#f9f9f9; margin:0; }
           header { background:linear-gradient(135deg,#4a90e2,#357ab8); color:white; padding:1rem; text-align:center; }
@@ -27,11 +27,11 @@ export default async function handler(req, res) {
         </style>
       </head>
       <body>
-        <header><h1>Workshop Registration</h1></header>
+        <header><h1>Pendaftaran Acara</h1></header>
         <main>
-          <h2>Registered Participants</h2>
+          <h2>Peserta Terdaftar</h2>
           <table>
-            <tr><th>Name</th><th>Number</th></tr>
+            <tr><th>Nama</th><th>Nomor</th></tr>
             ${rows}
           </table>
         </main>
