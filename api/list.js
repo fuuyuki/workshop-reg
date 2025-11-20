@@ -33,7 +33,7 @@ export default async function handler(req, res) {
           th, td { border:1px solid #ccc; padding:0.5rem; text-align:left; }
           th { background:#eee; }
           td:last-child { height:2rem; } /* space for signature */
-          button { margin-top:1rem; padding:0.5rem 1rem; background:#4a90e2; color:white; border:none; border-radius:4px; cursor:pointer; }
+          button { margin-top:1rem; margin-right:0.5rem; padding:0.5rem 1rem; background:#4a90e2; color:white; border:none; border-radius:4px; cursor:pointer; }
           button:hover { background:#357ab8; }
         </style>
       </head>
@@ -52,6 +52,7 @@ export default async function handler(req, res) {
             ${rows}
           </table>
           <button onclick="exportPDFFromData()">Export to PDF</button>
+          <button onclick="exportBlankPDF()">Export Blank Table</button>
         </main>
 
         <!-- jsPDF + AutoTable -->
@@ -62,13 +63,10 @@ export default async function handler(req, res) {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
-            // Table headers
             const headers = [["#", "Nama", "Nomor", "Jam Daftar", "Tanda Tangan"]];
-
-            // Extract data from HTML table into rows
             const table = document.getElementById("participants-table");
             const rows = Array.from(table.querySelectorAll("tr"))
-              .slice(1) // skip header row
+              .slice(1)
               .map((tr, i) => {
                 const cells = tr.querySelectorAll("td");
                 return [
@@ -76,32 +74,55 @@ export default async function handler(req, res) {
                   cells[1].innerText,
                   cells[2].innerText,
                   cells[3].innerText,
-                  "" // blank signature column
+                  ""
                 ];
               });
 
-            // Title
             doc.setFontSize(14);
             doc.text("Daftar Kehadiran Peserta", 14, 15);
 
-            // Generate table
             doc.autoTable({
               head: headers,
               body: rows,
               startY: 20,
               styles: { halign: "left", valign: "middle" },
-              columnStyles: { 4: { cellWidth: 40 } } // wider signature column
+              columnStyles: { 4: { cellWidth: 40 } }
             });
 
-            // Footer with total participants
             doc.setFontSize(10);
             doc.text("Total Peserta: " + rows.length, 14, doc.lastAutoTable.finalY + 10);
 
-            // Save PDF
             doc.save("presence-sheet.pdf");
+          }
+
+          function exportBlankPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const headers = [["#", "Nama", "Nomor", "Jam Daftar", "Tanda Tangan"]];
+            const rows = [];
+
+            // Generate 30 blank rows
+            for (let i = 0; i < 30; i++) {
+              rows.push([i + 1, "", "", "", ""]);
+            }
+
+            doc.setFontSize(14);
+            doc.text("Daftar Kehadiran Peserta (Kosong)", 14, 15);
+
+            doc.autoTable({
+              head: headers,
+              body: rows,
+              startY: 20,
+              styles: { halign: "left", valign: "middle" },
+              columnStyles: { 4: { cellWidth: 40 } }
+            });
+
+            doc.save("blank-presence-sheet.pdf");
           }
         </script>
       </body>
     </html>
   `);
 }
+
