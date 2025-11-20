@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import QRCode from 'qrcode';
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
