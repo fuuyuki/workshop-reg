@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
   if (error) return res.status(500).send('Database error: ' + error.message);
 
-  const rows = data.map(r => `<tr><td>${r.name}</td><td>${r.number}</td><td>${new Date(p.created_at).toLocaleString()}</td></tr>`).join('');
+  const rows = data.map(r => `<tr><td>${r.name}</td><td>${r.number}</td><td>${new Date(r.created_at).toLocaleString()}</td></tr>`).join('');
 
   res.setHeader('Content-Type', 'text/html');
   res.send(`
