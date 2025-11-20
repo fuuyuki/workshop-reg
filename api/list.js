@@ -4,7 +4,7 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY
 export default async function handler(req, res) {
   const { data, error } = await supabase
     .from('registrations')
-    .select('name, number')
+    .select('name, number, created_at')
     .order('created_at', { ascending: true });
 
   if (error) return res.status(500).send('Database error: ' + error.message);
