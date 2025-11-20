@@ -9,7 +9,15 @@ export default async function handler(req, res) {
 
   if (error) return res.status(500).send('Database error: ' + error.message);
 
-  const rows = data.map(r => `<tr><td>${r.name}</td><td>${r.number}</td><td>${new Date(r.created_at).toLocaleString()}</td></tr>`).join('');
+  // Use index from map to generate count column
+  const rows = data.map((r, index) => `
+    <tr>
+      <td>${index + 1}</td>
+      <td>${r.name}</td>
+      <td>${r.number}</td>
+      <td>${new Date(r.created_at).toLocaleString()}</td>
+    </tr>
+  `).join('');
 
   res.setHeader('Content-Type', 'text/html');
   res.send(`
@@ -31,7 +39,7 @@ export default async function handler(req, res) {
         <main>
           <h2>Peserta Terdaftar</h2>
           <table>
-            <tr><th>Nama</th><th>Nomor</th><th>Jam Daftar</th></tr>
+            <tr><th>#</th><th>Nama</th><th>Nomor</th><th>Jam Daftar</th></tr>
             ${rows}
           </table>
         </main>
