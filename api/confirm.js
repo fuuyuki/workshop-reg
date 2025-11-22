@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     const { data: participant, error } = await supabase
       .from('registrations')
       .select('name, number, created_at, attendance_time, checked')
-      .eq('id', id)
+      .eq('number', number)
       .single();
 
     if (error || !participant) {
