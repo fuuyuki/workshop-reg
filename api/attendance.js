@@ -69,7 +69,7 @@ export default async function handler(req, res) {
       }
 
       // 3. Redirect to confirm page with participant ID
-      return res.redirect(`/confirm?number=${participant.number}`);
+      return res.redirect(`/api/confirm?number=${participant.number}`);
     } catch (err) {
       console.error(err);
       return res.status(500).send("Server error");
