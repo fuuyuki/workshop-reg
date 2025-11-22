@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
 export default async function handler(req, res) {
-  const { id } = req.query;
+  const { number } = req.query;
 
   try {
     // Fetch participant data by ID
@@ -48,3 +48,4 @@ export default async function handler(req, res) {
     res.status(500).send('Server error');
   }
 }
+
